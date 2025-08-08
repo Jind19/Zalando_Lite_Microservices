@@ -8,10 +8,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 import java.util.List;
 
-
 @Data
 @RequiredArgsConstructor
-@AllArgsConstructor
 @Document(collection = "orders")
 public class Order {
 
@@ -22,10 +20,12 @@ public class Order {
     private List<OrderLineItem> items;
 
     // Final price after discount
-    private double totalAmount;
+    private double totalPrice;
 
     // Total discount amount or rate applied
     private double discountApplied;
 
+    public Order(List<OrderLineItem> items) {
+    }
 
 }

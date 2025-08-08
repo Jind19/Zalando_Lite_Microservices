@@ -5,7 +5,5 @@ package com.example.orderService.dto.response;
  */
 public record OrderLineItemResponse(
         Long productId,
-        int quantity,
-        double price,           // Optional: price per item
-        double discountedPrice  // Optional: price after discount
+        int quantity
 ) {}

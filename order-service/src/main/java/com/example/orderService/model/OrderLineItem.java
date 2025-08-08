@@ -11,5 +11,4 @@ public class OrderLineItem {
 
     private int quantity;
 
-    private double pricePerUnit;
 }

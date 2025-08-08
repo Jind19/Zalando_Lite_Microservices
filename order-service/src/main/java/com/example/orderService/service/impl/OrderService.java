@@ -2,21 +2,16 @@ package com.example.orderService.service.impl;
 
 import com.example.orderService.dto.request.CreateOrderRequest;
 import com.example.orderService.dto.response.OrderResponse;
-import com.example.orderService.repository.OrderRepository;
-import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
 
-@RequiredArgsConstructor
 @Service
-public class OrderService {
+public interface OrderService {
 
-    private final OrderRepository repository;
-    private final RestTemplate restTemplate;
+    List<OrderResponse> getAllOrders();
 
-    public OrderResponse placeOrder(@Valid CreateOrderRequest request) {
-        return
-    }
+    OrderResponse placeOrder(CreateOrderRequest request);
+
+    OrderResponse getOrderById(String id);
 }
