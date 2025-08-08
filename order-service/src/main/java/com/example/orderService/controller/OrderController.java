@@ -3,7 +3,7 @@ package com.example.orderService.controller;
 
 import com.example.orderService.dto.request.CreateOrderRequest;
 import com.example.orderService.dto.response.OrderResponse;
-import com.example.orderService.service.OrderService;
+import com.example.orderService.service.impl.OrderService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +18,7 @@ public class OrderController {
     private final OrderService orderService;
 
     public OrderResponse createOrder(@Valid @RequestBody CreateOrderRequest request){
-        return orderService.createOrder(request);
+        return orderService.placeOrder(request);
     }
 
 
