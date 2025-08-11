@@ -5,6 +5,7 @@ import com.example.orderService.dto.response.OrderResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface OrderService {
@@ -13,5 +14,5 @@ public interface OrderService {
 
     OrderResponse placeOrder(CreateOrderRequest request);
 
-    OrderResponse getOrderById(String id);
+    Optional<OrderResponse> getOrderById(String id);
 }

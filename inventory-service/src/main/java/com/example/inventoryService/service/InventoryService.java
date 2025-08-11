@@ -51,12 +51,12 @@ public class InventoryService {
      * @throws RuntimeException if the product does not exist or if there is not enough stock
      */
     public void deductStock(Long productId, int quantity) {
-        Inventory inventory = repository.findByProductId()
-                .orElseThrow( () -> new RuntimeException("Product not found: " + productId));
+        Inventory inventory = repository.findByProductId(productId)
+                .orElseThrow( () -> new IllegalArgumentException("Product not found: " + productId));
 
         //Check if stock is sufficient
         if( inventory.getQuantity() < quantity) {
-            throw new RuntimeException("Not enough stock for product: " + productId);
+            throw new IllegalArgumentException("Not enough stock for product: " + productId);
         }
 
         // Deduct the quantity

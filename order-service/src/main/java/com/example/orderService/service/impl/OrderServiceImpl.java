@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -53,9 +54,8 @@ public class OrderServiceImpl implements OrderService{
 
 
     @Override
-    public OrderResponse getOrderById(String id) {
+    public Optional<OrderResponse> getOrderById(String id) {
         return repository.findById(id)
-                .map(mapper::toOrderResponse)
-                .orElseThrow(() -> new IllegalArgumentException("Order not found: " + id));
+                .map(mapper::toOrderResponse);
     }
 }

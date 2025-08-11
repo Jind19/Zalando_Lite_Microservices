@@ -33,7 +33,8 @@ public class OrderMapper {
     }
 
     public OrderResponse toOrderResponse(Order order) {
-        List<OrderLineItemResponse> itemResponses = order.getItems()
+        List<OrderLineItemResponse> itemResponses =
+                (order.getItems() == null ? List.<OrderLineItem>of() : order.getItems())
                 .stream()
                 .map(
                         item -> new OrderLineItemResponse(
