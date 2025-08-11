@@ -41,4 +41,30 @@ public class InventoryService {
         int stock =  inventory.map(Inventory::getQuantity).orElse(0);
         return stock;
     }
+
+
+    /**
+     * Deducts a given quantity from the stock of the specified product.
+     *
+     * @param productId the ID of the product whose stock will be reduced
+     * @param quantity  the quantity to deduct (must be greater than 0)
+     * @throws RuntimeException if the product does not exist or if there is not enough stock
+     */
+    public void deductStock(Long productId, int quantity) {
+        Inventory inventory = repository.findByProductId()
+                .orElseThrow( () -> new RuntimeException("Product not found: " + productId));
+
+        //Check if stock is sufficient
+        if( inventory.getQuantity() < quantity) {
+            throw new RuntimeException("Not enough stock for product: " + productId);
+        }
+
+        // Deduct the quantity
+        inventory.setQuantity(inventory.getQuantity() - quantity);
+
+        // Save the updated inventory back to the repository
+        repository.save(inventory);
+
+
+    }
 }
